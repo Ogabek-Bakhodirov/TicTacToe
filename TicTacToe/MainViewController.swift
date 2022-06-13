@@ -39,6 +39,19 @@ class MainViewController: UIViewController {
         return view
     }()
     
+    
+    lazy var onePlayerBtn: UIButton = {
+        let btn = UIButton()
+        btn.translatesAutoresizingMaskIntoConstraints = false
+        btn.setTitle("One Player", for: .normal)
+        btn.backgroundColor = .clear
+        btn.setTitleColor(.yellow, for: .normal)
+        btn.titleLabel?.font = .systemFont(ofSize: 30, weight: .medium)
+        
+        return btn
+    }()
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -52,23 +65,30 @@ class MainViewController: UIViewController {
         view.addSubview(bgImageView)
         view.addSubview(titleLabel)
         view.addSubview(noteBoard)
+        view.addSubview(onePlayerBtn)
         
-        titleLabel.topAnchor.constraint(equalTo: view.topAnchor, constant:  40.0).isActive = true
-        titleLabel.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 20.0).isActive = true
-        titleLabel.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -20.0).isActive = true
-        titleLabel.heightAnchor.constraint(equalToConstant: 100).isActive = true
         
-        bgImageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
-        bgImageView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
-        bgImageView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
-        bgImageView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
-        
-        noteBoard.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -20.0).isActive = true
-        noteBoard.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 20.0).isActive = true
-        noteBoard.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.5).isActive = true
-        noteBoard.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
-        
+        NSLayoutConstraint.activate([
+            titleLabel.topAnchor.constraint(equalTo: view.topAnchor, constant:  40.0),
+            titleLabel.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 20.0),
+            titleLabel.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -20.0),
+            titleLabel.heightAnchor.constraint(equalToConstant: 100),
+            
+            bgImageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            bgImageView.leftAnchor.constraint(equalTo: view.leftAnchor),
+            bgImageView.rightAnchor.constraint(equalTo: view.rightAnchor),
+            bgImageView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+            
+            noteBoard.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -20.0),
+            noteBoard.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 20.0),
+            noteBoard.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.5),
+            noteBoard.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            
+            onePlayerBtn.topAnchor.constraint(equalTo: noteBoard.topAnchor, constant:  80.0),
+            onePlayerBtn.leftAnchor.constraint(equalTo: noteBoard.leftAnchor, constant: 20.0),
+            onePlayerBtn.rightAnchor.constraint(equalTo: noteBoard.rightAnchor, constant: -20.0),
+            onePlayerBtn.heightAnchor.constraint(equalToConstant: 60)
+        ])
     }
-    
 }
 
