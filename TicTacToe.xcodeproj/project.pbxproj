@@ -11,6 +11,8 @@
 		807BF2D02857255400477461 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 807BF2CF2857255400477461 /* MainViewController.swift */; };
 		807BF2D52857255500477461 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 807BF2D42857255500477461 /* Assets.xcassets */; };
 		807BF2D82857255500477461 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 807BF2D62857255500477461 /* LaunchScreen.storyboard */; };
+		807BF2E02857601500477461 /* OptionsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 807BF2DF2857601500477461 /* OptionsVC.swift */; };
+		807BF2E22857619E00477461 /* TwoPlayerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 807BF2E12857619E00477461 /* TwoPlayerVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,6 +22,8 @@
 		807BF2D42857255500477461 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		807BF2D72857255500477461 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		807BF2D92857255500477461 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		807BF2DF2857601500477461 /* OptionsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionsVC.swift; sourceTree = "<group>"; };
+		807BF2E12857619E00477461 /* TwoPlayerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwoPlayerVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +58,8 @@
 			children = (
 				807BF2CB2857255400477461 /* AppDelegate.swift */,
 				807BF2CF2857255400477461 /* MainViewController.swift */,
+				807BF2E12857619E00477461 /* TwoPlayerVC.swift */,
+				807BF2DF2857601500477461 /* OptionsVC.swift */,
 				807BF2D42857255500477461 /* Assets.xcassets */,
 				807BF2D62857255500477461 /* LaunchScreen.storyboard */,
 				807BF2D92857255500477461 /* Info.plist */,
@@ -131,7 +137,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				807BF2E22857619E00477461 /* TwoPlayerVC.swift in Sources */,
 				807BF2D02857255400477461 /* MainViewController.swift in Sources */,
+				807BF2E02857601500477461 /* OptionsVC.swift in Sources */,
 				807BF2CC2857255400477461 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -14,8 +14,9 @@ class MainViewController: UIViewController {
         view.translatesAutoresizingMaskIntoConstraints = false
         view.text = "Tic Tac Toe"
         view.textColor = .yellow
+        view.minimumScaleFactor = 30
         view.textAlignment = .center
-        view.numberOfLines = 0
+        view.numberOfLines = 1
         view.font = .systemFont(ofSize: 60.0, weight: .black)
         
         return view
@@ -34,11 +35,21 @@ class MainViewController: UIViewController {
         let view = UIImageView()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.image = #imageLiteral(resourceName: "ic_main_board")
-        view.contentMode = .scaleAspectFit
+        view.contentMode = .scaleToFill
         
         return view
     }()
     
+    lazy var menuBtnStack: UIStackView = {
+        let stack = UIStackView(arrangedSubviews: [onePlayerBtn, twoPlayerBtn, optionBtn])
+        stack.translatesAutoresizingMaskIntoConstraints = false
+        stack.axis = .vertical
+        stack.distribution = .fillEqually
+        stack.spacing = 18
+        stack.backgroundColor = .clear
+        
+        return stack
+    }()
     
     lazy var onePlayerBtn: UIButton = {
         let btn = UIButton()
@@ -48,6 +59,29 @@ class MainViewController: UIViewController {
         btn.setTitleColor(.yellow, for: .normal)
         btn.titleLabel?.font = .systemFont(ofSize: 30, weight: .medium)
         
+        return btn
+    }()
+    
+    lazy var twoPlayerBtn: UIButton = {
+        let btn = UIButton()
+        btn.translatesAutoresizingMaskIntoConstraints = false
+        btn.setTitle("Two Player", for: .normal)
+        btn.backgroundColor = .clear
+        btn.setTitleColor(.yellow, for: .normal)
+        btn.titleLabel?.font = .systemFont(ofSize: 30, weight: .medium)
+        btn.addTarget(self, action: #selector(twoPlayerTapped(on:)), for: .touchUpInside)
+        
+        return btn
+    }()
+    
+    lazy var optionBtn: UIButton = {
+        let btn = UIButton()
+        btn.translatesAutoresizingMaskIntoConstraints = false
+        btn.setTitle("Options", for: .normal)
+        btn.backgroundColor = .clear
+        btn.setTitleColor(.yellow, for: .normal)
+        btn.titleLabel?.font = .systemFont(ofSize: 30, weight: .medium)
+        btn.addTarget(self, action: #selector(tappedOptionsBtn(on:)), for: .touchUpInside)
         return btn
     }()
     
@@ -65,7 +99,7 @@ class MainViewController: UIViewController {
         view.addSubview(bgImageView)
         view.addSubview(titleLabel)
         view.addSubview(noteBoard)
-        view.addSubview(onePlayerBtn)
+        view.addSubview(menuBtnStack)
         
         
         NSLayoutConstraint.activate([
@@ -84,11 +118,25 @@ class MainViewController: UIViewController {
             noteBoard.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.5),
             noteBoard.centerYAnchor.constraint(equalTo: view.centerYAnchor),
             
-            onePlayerBtn.topAnchor.constraint(equalTo: noteBoard.topAnchor, constant:  80.0),
-            onePlayerBtn.leftAnchor.constraint(equalTo: noteBoard.leftAnchor, constant: 20.0),
-            onePlayerBtn.rightAnchor.constraint(equalTo: noteBoard.rightAnchor, constant: -20.0),
-            onePlayerBtn.heightAnchor.constraint(equalToConstant: 60)
+            menuBtnStack.leftAnchor.constraint(equalTo: noteBoard.leftAnchor),
+            menuBtnStack.rightAnchor.constraint(equalTo: noteBoard.rightAnchor),
+            menuBtnStack.heightAnchor.constraint(equalTo: noteBoard.heightAnchor, multiplier: 0.58),
+            menuBtnStack.centerYAnchor.constraint(equalTo: noteBoard.centerYAnchor),
         ])
+    }
+    
+    @objc func tappedOptionsBtn(on button: UIButton){
+        let optionsVC = OptionsVC()
+        optionsVC.modalPresentationStyle = .fullScreen
+        optionsVC.modalTransitionStyle = .coverVertical
+        present(optionsVC, animated: true)
+    }
+    
+    @objc func twoPlayerTapped(on button: UIButton){
+        let twoPlayerVC = TwoPlayerVC()
+        twoPlayerVC.modalPresentationStyle = .fullScreen
+        twoPlayerVC.modalTransitionStyle = .coverVertical
+        present(twoPlayerVC, animated: true)
     }
 }
 
