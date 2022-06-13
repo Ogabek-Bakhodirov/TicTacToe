@@ -84,12 +84,12 @@ class TwoPlayerVC: UIViewController{
     
     //MARK: - Parametr names Stack
     lazy var parametrNamesStack: UIStackView = {
-        let stack = UIStackView(arrangedSubviews: [FirstPlayerNameLabel])
+        let stack = UIStackView(arrangedSubviews: [FirstPlayerNameLabel, OpponentNameLabel, FirstMove, Pieces])
         stack.translatesAutoresizingMaskIntoConstraints = false
         stack.axis = .vertical
-        stack.distribution = .fill
+        stack.distribution = .fillEqually
         stack.spacing = 15
-        stack.backgroundColor = .green
+        stack.backgroundColor = .clear
         
         return stack
     }()
@@ -98,8 +98,54 @@ class TwoPlayerVC: UIViewController{
     lazy var FirstPlayerNameLabel: UILabel = {
         let view = UILabel()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.text = "First Player Name:"
+        view.text = "Name:"
         view.textColor = .black
+        view.backgroundColor = .orange
+        view.minimumScaleFactor = 10
+        view.textAlignment = .left
+        view.numberOfLines = 1
+        view.font = .systemFont(ofSize: 15.0, weight: .medium)
+        
+        return view
+    }()
+    
+    //MARK: - Parametr opponents Label
+    lazy var OpponentNameLabel: UILabel = {
+        let view = UILabel()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.text = "Opponent:"
+        view.textColor = .black
+        view.backgroundColor = .orange
+        view.minimumScaleFactor = 10
+        view.textAlignment = .left
+        view.numberOfLines = 1
+        view.font = .systemFont(ofSize: 15.0, weight: .medium)
+        
+        return view
+    }()
+    
+    //MARK: - First Move Label
+    lazy var FirstMove: UILabel = {
+        let view = UILabel()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.text = "First Move:"
+        view.textColor = .black
+        view.backgroundColor = .orange
+        view.minimumScaleFactor = 10
+        view.textAlignment = .left
+        view.numberOfLines = 1
+        view.font = .systemFont(ofSize: 15.0, weight: .medium)
+        
+        return view
+    }()
+    
+    //MARK: - Pieces Label
+    lazy var Pieces: UILabel = {
+        let view = UILabel()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.text = "Pieces:"
+        view.textColor = .black
+        view.backgroundColor = .orange
         view.minimumScaleFactor = 10
         view.textAlignment = .left
         view.numberOfLines = 1
@@ -110,17 +156,17 @@ class TwoPlayerVC: UIViewController{
     
     //MARK: - Parametrs Stack
     lazy var parametrsStack: UIStackView = {
-        let stack = UIStackView(arrangedSubviews: [FirstPlayerNameTF])
+        let stack = UIStackView(arrangedSubviews: [FirstPlayerNameTF, oppenentTF, FirstMoveStack, PiecesParametr])
         stack.translatesAutoresizingMaskIntoConstraints = false
         stack.axis = .vertical
-        stack.distribution = .fill
+        stack.distribution = .fillEqually
         stack.spacing = 15
-        stack.backgroundColor = .red
+        stack.backgroundColor = .clear
         
         return stack
     }()
     
-    //MARK: - Parametrs
+    //MARK: - first player name text field Parametrs
     lazy var FirstPlayerNameTF: UITextField = {
         let view = UITextField()
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -129,6 +175,147 @@ class TwoPlayerVC: UIViewController{
         return view
     }()
     
+    //MARK: - oppenent player name text field Parametrs
+    lazy var oppenentTF: UITextField = {
+        let view = UITextField()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.backgroundColor = .red
+        
+        return view
+    }()
+    
+    //MARK: - First Move Stack
+    lazy var PiecesParametr: UIStackView = {
+        let stack = UIStackView(arrangedSubviews: [XOBtn1, XOBtn2, XOBtn3])
+        stack.translatesAutoresizingMaskIntoConstraints = false
+        stack.axis = .horizontal
+        stack.distribution = .fillEqually
+        stack.spacing = 10
+        stack.backgroundColor = .clear
+        
+        return stack
+    }()
+    
+    //MARK: - X Button
+    lazy var XOBtn1: UIButton = {
+        let btn = UIButton()
+        btn.translatesAutoresizingMaskIntoConstraints = false
+        btn.setTitle("XO", for: .normal)
+        btn.backgroundColor = .orange
+        btn.setTitleColor(.black, for: .normal)
+        btn.titleLabel?.font = .systemFont(ofSize: 15, weight: .black)
+        
+        return btn
+    }()
+    
+    //MARK: - O Button
+    lazy var XOBtn2: UIButton = {
+        let btn = UIButton()
+        btn.translatesAutoresizingMaskIntoConstraints = false
+        btn.setTitle("XO", for: .normal)
+        btn.backgroundColor = .red
+        btn.setTitleColor(.black, for: .normal)
+        btn.titleLabel?.font = .systemFont(ofSize: 15, weight: .black)
+        
+        return btn
+    }()
+    
+    //MARK: - XO Button
+    lazy var XOBtn3: UIButton = {
+        let btn = UIButton()
+        btn.translatesAutoresizingMaskIntoConstraints = false
+        btn.setTitle("XO", for: .normal)
+        btn.backgroundColor = .yellow
+        btn.setTitleColor(.black, for: .normal)
+        btn.titleLabel?.font = .systemFont(ofSize: 15, weight: .black)
+        
+        return btn
+    }()
+    
+    
+    //MARK: - First Move Stack
+    lazy var FirstMoveStack: UIStackView = {
+        let stack = UIStackView(arrangedSubviews: [XBtn, OBtn, XOBtn])
+        stack.translatesAutoresizingMaskIntoConstraints = false
+        stack.axis = .horizontal
+        stack.distribution = .fillEqually
+        stack.spacing = 10
+        stack.backgroundColor = .clear
+        
+        return stack
+    }()
+    
+    //MARK: - X Button
+    lazy var XBtn: UIButton = {
+        let btn = UIButton()
+        btn.translatesAutoresizingMaskIntoConstraints = false
+        btn.setTitle("X", for: .normal)
+        btn.backgroundColor = .orange
+        btn.setTitleColor(.black, for: .normal)
+        btn.titleLabel?.font = .systemFont(ofSize: 15, weight: .black)
+        
+        return btn
+    }()
+    
+    //MARK: - O Button
+    lazy var OBtn: UIButton = {
+        let btn = UIButton()
+        btn.translatesAutoresizingMaskIntoConstraints = false
+        btn.setTitle("O", for: .normal)
+        btn.backgroundColor = .red
+        btn.setTitleColor(.black, for: .normal)
+        btn.titleLabel?.font = .systemFont(ofSize: 15, weight: .black)
+        
+        return btn
+    }()
+    
+    //MARK: - XO Button
+    lazy var XOBtn: UIButton = {
+        let btn = UIButton()
+        btn.translatesAutoresizingMaskIntoConstraints = false
+        btn.setTitle("XO", for: .normal)
+        btn.backgroundColor = .yellow
+        btn.setTitleColor(.black, for: .normal)
+        btn.titleLabel?.font = .systemFont(ofSize: 15, weight: .black)
+        
+        return btn
+    }()
+    //MARK: - Back and Start stack
+    lazy var backAndStartStack: UIStackView = {
+        let stack = UIStackView(arrangedSubviews: [backBtn, startBtn])
+        stack.translatesAutoresizingMaskIntoConstraints = false
+        stack.axis = .horizontal
+        stack.distribution = .fillEqually
+        stack.spacing = 20
+        stack.backgroundColor = .clear
+        
+        return stack
+    }()
+    
+    
+    //MARK: - Back Button
+    lazy var backBtn: UIButton = {
+        let btn = UIButton()
+        btn.translatesAutoresizingMaskIntoConstraints = false
+        btn.setTitle("Back", for: .normal)
+        btn.backgroundColor = .orange
+        btn.setTitleColor(.black, for: .normal)
+        btn.titleLabel?.font = .systemFont(ofSize: 35, weight: .black)
+        
+        return btn
+    }()
+    
+    //MARK: - Start Button
+    lazy var startBtn: UIButton = {
+        let btn = UIButton()
+        btn.translatesAutoresizingMaskIntoConstraints = false
+        btn.setTitle("Start", for: .normal)
+        btn.backgroundColor = .orange
+        btn.setTitleColor(.black, for: .normal)
+        btn.titleLabel?.font = .systemFont(ofSize: 35, weight: .black)
+        
+        return btn
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -143,6 +330,7 @@ class TwoPlayerVC: UIViewController{
         view.addSubview(titleLabel)
         view.addSubview(noteBoard)
         view.addSubview(menuStack)
+        view.addSubview(backAndStartStack)
 
         
         NSLayoutConstraint.activate([
@@ -167,7 +355,11 @@ class TwoPlayerVC: UIViewController{
             menuStack.heightAnchor.constraint(equalTo: noteBoard.heightAnchor, multiplier: 0.7),
             menuStack.centerYAnchor.constraint(equalTo: noteBoard.centerYAnchor),
             
-//            twoPlayerLabelOfBoard.heightAnchor.constraint(equalTo: menuStack.heightAnchor, constant: 20)
+            backAndStartStack.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.08),
+            backAndStartStack.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -10),
+            backAndStartStack.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 10),
+            backAndStartStack.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -10)
+
         ])
     }
 }
